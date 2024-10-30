@@ -7,8 +7,8 @@ w = 2 * np.pi * f
 # Generates a sine wave using numpy functions
 def generate_sine_wave():
     x = np.linspace(0, 5, 1000)
-    y = np.sin(w * x)
-    return x, y
+    sine_wave = np.sin(w * x)
+    return x, sine_wave
 
 # Generates a square wave using numpy functions
 def generate_square_wave():
