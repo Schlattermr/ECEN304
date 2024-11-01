@@ -73,7 +73,16 @@ def approximate_fourier_series(coefficients, N, t, T):
 
     return approx
 
-def calculate_discrete_fourier_transform():
-    dftCoefficients = 0
+def calculate_discrete_fourier_transform(signal, N):
+    if N > len(signal):
+        signal = np.pad(signal, (0, N - len(signal)), 'constant')
+    elif N < len(signal):
+        raise ValueError("N must be at least as long as the length of the input signal")
+
+    # Compute the DFT using the DFT formula
+    dftCoefficients = np.zeros(N, dtype=complex)
+    for k in range(N):
+        for n in range(N):
+            dftCoefficients[k] += signal[n] * np.exp(-1j * n * k * 2 * np.pi / N)
 
     return dftCoefficients
